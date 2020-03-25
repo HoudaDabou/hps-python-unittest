@@ -5,14 +5,12 @@ python: 2.7
 
 env:
   - SECRET_TOKEN=407865243842415070840827608579584201612907649740618373828
-  - TEST_RUN_ID=235600
-  
   
 before_install:
   - rvm install 2.5
   - rvm use 2.5
   - gem install hiptest-publisher
-  - hiptest-publisher -c python-unittest.conf --token=$SECRET_TOKEN --only=tests --test-run-id="$TEST_RUN_ID"
+  - hiptest-publisher -c python-unittest.conf --token=$SECRET_TOKEN --only=tests --test-run-id=235600
 
 script:
  - python bootstrap.py
@@ -20,4 +18,4 @@ script:
  - bin/test --with-xunit
 
 after_script:
-  - hiptest-publisher -c python-unittest.conf --token=$SECRET_TOKEN --push="nosetests.xml" --test-run-id="$TEST_RUN_ID"
+  - hiptest-publisher -c python-unittest.conf --token=$SECRET_TOKEN --push="nosetests.xml" --test-run-id=235600
