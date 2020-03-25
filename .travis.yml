@@ -2,11 +2,17 @@ language: python
 sudo: false
 python: 2.7
 
+
+env:
+  - SECRET_TOKEN=407865243842415070840827608579584201612907649740618373828
+  - TEST_RUN_ID=235600
+  
+  
 before_install:
   - rvm install 2.2
   - rvm use 2.2
   - gem install hiptest-publisher
-  - hiptest-publisher -c python-unittest.conf --token=$SECRET_TOKEN --only=tests --test-run-id=TEST_RUN_ID
+  - hiptest-publisher -c python-unittest.conf --token=$SECRET_TOKEN --only=tests --test-run-id=$TEST_RUN_ID
 
 script:
  - python bootstrap.py
