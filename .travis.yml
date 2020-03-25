@@ -13,6 +13,7 @@ before_install:
   - hiptest-publisher -c python-unittest.conf --token=$SECRET_TOKEN --only=tests --test-run-id=235600
 
 script:
+ - pip uninstall setuptools -y
  - python bootstrap.py
  - bin/buildout
  - bin/test --with-xunit
